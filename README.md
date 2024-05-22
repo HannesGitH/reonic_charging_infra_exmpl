@@ -2,7 +2,7 @@
 
 ## task 1
 
-as the script is embedded into the second task which uses sveltekit and imports the data via its loaders its best to start the server and directly access the endpoint.
+as the script (located at `src/routes/api/simulation`) is embedded into the second task which uses sveltekit and imports the data via its loaders its best to start the server and directly access the endpoint.
 
 This can be done by running the following commands:
 
@@ -11,7 +11,7 @@ npm i && npm run serve # starts the server
 curl -H 'Content-Type: application/json' \
      -d '{}' \
      -X POST \
-    http://localhost:4173/simulation
+    http://localhost:4173/api/simulation
 ```
 
 via `-d` different paramters can be passed to the server. Accepted values (json-foramtted) are:
