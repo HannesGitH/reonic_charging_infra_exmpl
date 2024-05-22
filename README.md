@@ -24,5 +24,7 @@ via `-d` different paramters can be passed to the server. Accepted values (json-
 - car_parks_atleast_1_step: boolean
 - random_seed: string
 
+obviously the max power demand directly relates (with a foctor of 11kw) to the number of used charge points, which are around 7 using the default values, therefor having less than 7 charge points will result in a concurrency of 1 (with some cars needing to leave without charging, or using a non charging space) and having more than 7 will linearly decrease the concurrency.
+
 ## task 2 (a)
 
