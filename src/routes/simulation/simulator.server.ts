@@ -1,5 +1,6 @@
 import rand from "random-seed"; // js Math.random() is not deterministic (ie not seedable)
 
+// this could theoretically be run client side as well but i consider the csv files as internal data, being in the server directory disallows import them in client facing code 
 import t1 from "$lib/server/data/t1__hourly_arrival_distribution.csv";
 import t2 from "$lib/server/data/t2__charging_demand_distribution.csv";
 

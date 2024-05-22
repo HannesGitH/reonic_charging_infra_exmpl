@@ -2,6 +2,7 @@
 	"name": "reonic-charging-infra-exmpl",
 	"version": "0.0.1",
 	"scripts": {
+		"serve": "vite build && vite preview",
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
