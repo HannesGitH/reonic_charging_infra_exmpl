@@ -43,3 +43,4 @@ npm i && npm run serve
   - the layout works better if its not there (as both columns would have similar sizes), could be fixed by adding it to the aforementioned plot section
   - its not sorted (charge point 1 is not the first one in the selection), could be fixed by re-sorting the data with the actual-index key
   - I'd rather put the usage into the charge point components in the first section itself, but at least with the current solution inputs are clearly separated from outputs
+- the code could be more modular, but I wanted to keep it simple and not overengineer it
