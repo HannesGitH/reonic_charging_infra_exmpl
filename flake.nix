@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
   };
   outputs = { nixpkgs, ... }@inputs:
     let
@@ -13,14 +13,21 @@
     {
       packages = forAllSystems(system: with mkPkgs system; rec {
         default = server;
-        server = stdenv.mkDerivation {
+        server = stdenv.mkDerivation (finalAttrs: rec {
           name = "reonic-charging-infra-exmpl";
+          pname = name;
+          version = "0.0.1";
           src = ./.;
           nativeBuildInputs = [
             nodejs
             pnpm.configHook
           ];
-        };
+
+          pnpmDeps = pnpm.fetchDeps {
+            inherit (finalAttrs) pname version src;
+            hash = "";
+          };
+        });
       });
       devShells = forAllSystems(system: with mkPkgs system; rec {
         default = mkShell {
