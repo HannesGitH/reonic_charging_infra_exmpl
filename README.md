@@ -7,7 +7,7 @@ as the script (located at `src/routes/api/simulation`) is embedded into the seco
 This can be done by running the following commands:
 
 ```bash
-npm i && npm run serve # starts the server
+pnpm i && pnpm run serve # starts the server
 curl -H 'Content-Type: application/json' \
      -d '{}' \
      -X POST \
@@ -33,8 +33,10 @@ I chose (a) partially because the simulation runs so fast I felt like the UI wou
 The UI entry point is located at `src/routes/+page.svelte` and can be started by running the following commands and opening the URL in a browser:
 
 ```bash
-npm i && npm run serve
+pnpm i && pnpm run serve
 ```
+
+or, if you have `nix` installed, you can simply `nix run github:HannesGitH/reonic-charging-infra-exmpl` without even cloning this repo
 
 ### additional information
 

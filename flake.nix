@@ -25,11 +25,25 @@
 
           pnpmDeps = pnpm.fetchDeps {
             inherit (finalAttrs) pname version src;
-            hash = "";
+            hash = "sha256-EobgqRnLJ/KQQw1A8XmQw5volBBlXYpRT5vGT6ggKts=";
           };
+
+           buildPhase = ''
+            pnpm install
+            pnpm build
+          '';
+
+          installPhase = ''
+            mkdir -p $out
+            cp -r ./.svelte-kit $out/.svelte-kit
+            touch $out/bin/server
+            chmod +x $out/bin/server
+            echo "#!${nodejs}/bin/node" >> $out/bin/server
+            echo "pnpm run serve" >> $out/bin/server
+          '';
         });
       });
-      devShells = forAllSystems(system: with mkPkgs system; rec {
+      devShells = forAllSystems(system: with mkPkgs system; {
         default = mkShell {
           buildInputs = [
             nodePackages.pnpm
