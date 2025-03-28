@@ -35,12 +35,12 @@
 
           installPhase = ''
             mkdir -p $out/bin
-            cp -r .svelte-kit/output $out/dist
+            cp -r .svelte-kit $out
+            cp package.json $out
             touch $out/bin/${name}
             chmod +x $out/bin/${name}
             echo "#!${bash}/bin/bash" > $out/bin/${name}
-            echo "cd $out" >> $out/bin/${name}
-            echo "${pnpm}/bin/pnpx vite preview --host" >> $out/bin/${name}
+            echo "${pnpm}/bin/pnpm preview" >> $out/bin/${name}
           '';
         });
       });
