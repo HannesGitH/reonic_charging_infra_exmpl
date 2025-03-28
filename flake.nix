@@ -34,12 +34,12 @@
           '';
 
           installPhase = ''
-            mkdir -p $out
-            cp -r ./.svelte-kit $out/.svelte-kit
-            touch $out/bin/server
-            chmod +x $out/bin/server
-            echo "#!${nodejs}/bin/node" >> $out/bin/server
-            echo "pnpm run serve" >> $out/bin/server
+            mkdir -p $out/bin
+            cp -r ./.svelte-kit/output/server $out/dist
+            touch $out/bin/${name}
+            chmod -R +x $out
+            echo "#!${bash}/bin/bash" >> $out/bin/${name}
+            echo "${nodejs}/bin/node $out/dist/index.js" >> $out/bin/${name}
           '';
         });
       });
