@@ -12,8 +12,8 @@
     in
     {
       packages = forAllSystems(system: with mkPkgs system; rec {
-        default = server;
-        server = stdenv.mkDerivation (finalAttrs: rec {
+        default = prod;
+        prod = stdenv.mkDerivation (finalAttrs: rec {
           name = "reonic-charging-infra-exmpl";
           pname = name;
           version = "0.0.1";
@@ -35,11 +35,12 @@
 
           installPhase = ''
             mkdir -p $out/bin
-            cp -r ./.svelte-kit/output/server $out/dist
+            cp -r .svelte-kit/output $out/dist
             touch $out/bin/${name}
-            chmod -R +x $out
-            echo "#!${bash}/bin/bash" >> $out/bin/${name}
-            echo "${nodejs}/bin/node $out/dist/index.js" >> $out/bin/${name}
+            chmod +x $out/bin/${name}
+            echo "#!${bash}/bin/bash" > $out/bin/${name}
+            echo "cd $out" >> $out/bin/${name}
+            echo "${pnpm}/bin/pnpx vite preview --host" >> $out/bin/${name}
           '';
         });
       });
